@@ -2,6 +2,12 @@
 
 ![easy goto](./easyGotoSlogn.png)
 
+## 打包安装
+```
+vsce package
+code --install-extension selfdef-0.1.4.vsix
+```
+
 ## Feature
 
 on editor, you can easy goto file or directory.

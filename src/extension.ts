@@ -52,7 +52,12 @@ export function activate(context: vscode.ExtensionContext) {
             // 路径
             const absolutePath = doc.fileName;
             const projectPath = getProjectPath(doc)||'';
-			const relativePath = path.relative(projectPath, absolutePath);
+			let relativePath = path.relative(projectPath, absolutePath);
+
+            // 根路径下的目录添加文件名的第一个字符为路径关键字
+            if (!relativePath.includes('/')) {
+                relativePath = relativePath[0]+'/'+relativePath;
+            }
 
 			let goto = `@{${selectedText}}#{${relativePath}}`;
 			vscode.env.clipboard.writeText(goto);
